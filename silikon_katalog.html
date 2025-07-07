@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profesionální katalog silikonových profilů a těsnění">
+    <title>Katalog silikonových profilů | Technická specifikace</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <style>
+        /* CSS Reset and Custom Properties */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2563eb;
+            --accent-color: #3b82f6;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition-base: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-mono: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background-color: var(--bg-secondary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Layout Components */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .header-content {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 60px;
+            bottom: 0;
+            width: 280px;
+            background: var(--bg-primary);
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            transition: transform var(--transition-base);
+        }
+
+        .sidebar-section {
+            padding: 24px 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            margin-top: 60px;
+            flex: 1;
+            padding: 24px;
+            max-width: 1440px;
+        }
+
+        /* Search and Filters */
+        .controls-section {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all var(--transition-base);
+            background: var(--bg-primary);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            list-style: none;
+        }
+
+        .category-item {
+            margin-bottom: 4px;
+        }
+
+        .category-btn {
+            width: 100%;
+            padding: 10px 16px;
+            border: none;
+            background: transparent;
+            text-align: left;
+            font-size: 15px;
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            position: relative;
+        }
+
+        .category-btn * {
+            pointer-events: none;
+        }
+
+        .category-btn:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .category-btn.active {
+            background: var(--accent-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        .category-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-count {
+            font-size: 13px;
+            padding: 2px 8px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        .category-btn.active .category-count {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Statistics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all var(--transition-base);
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .stat-change {
+            font-size: 13px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stat-change.positive {
+            color: var(--success-color);
+        }
+
+        /* Product Grid */
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .products-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .view-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .view-btn {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .view-btn:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .view-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all var(--transition-base);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .product-id {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-tertiary);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .product-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success-color);
+        }
+
+        .product-profile {
+            width: 100%;
+            height: 160px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-svg {
+            width: 140px;
+            height: 140px;
+        }
+
+        .product-code {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-family: var(--font-mono);
+        }
+
+        .product-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .spec-label {
+            color: var(--text-secondary);
+        }
+
+        .spec-value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .product-tag {
+            font-size: 12px;
+            padding: 4px 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        /* Upload Area */
+        .upload-container {
+            max-width: 600px;
+            margin: 80px auto;
+        }
+
+        .upload-card {
+            background: var(--bg-primary);
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 48px;
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .upload-card:hover {
+            border-color: var(--accent-color);
+            background: var(--bg-tertiary);
+        }
+
+        .upload-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .upload-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .upload-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .upload-btn {
+            padding: 12px 24px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .upload-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            animation: fadeIn 200ms ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 200ms ease;
+        }
+
+        .modal-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-base);
+        }
+
+        .modal-close:hover {
+            background: var(--bg-secondary);
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .detail-profile {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .info-section {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .info-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 16px;
+            font-size: 15px;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+        }
+
+        .info-value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Loading State */
+        .loading-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Sidebar backdrop for mobile */
+        .sidebar-backdrop {
+            display: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .sidebar-backdrop {
+                display: block;
+                animation: fadeIn 200ms ease;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 1100;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 16px;
+            }
+
+            .main-content {
+                padding: 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal {
+                width: 95%;
+                margin: 16px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .header,
+            .sidebar,
+            .controls-section,
+            .view-controls,
+            .upload-btn,
+            .modal-overlay {
+                display: none !important;
+            }
+
+            .main-content {
+                margin: 0;
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            .products-header {
+                margin-bottom: 20px;
+                border-bottom: 2px solid #000;
+                padding-bottom: 10px;
+            }
+            
+            .products-title {
+                color: #000;
+                font-size: 24px;
+            }
+
+            .product-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                border: 1px solid #000;
+                margin-bottom: 15px;
+                box-shadow: none;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .stat-card {
+                border: 1px solid #000;
+                box-shadow: none;
+            }
+            
+            .product-profile {
+                background: white;
+                border: 1px solid #ddd;
+            }
+            
+            .profile-svg text {
+                fill: #000;
+            }
+            
+            @page {
+                margin: 1cm;
+                size: A4;
+            }
+        }
+
+        /* List View Styles */
+        .products-grid.list-view {
+            grid-template-columns: 1fr !important;
+        }
+
+        .list-view .product-card {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .list-view .product-profile {
+            height: 80px;
+            width: 100px;
+            margin-bottom: 0;
+        }
+
+        .list-view .product-header {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+        }
+
+        .list-view .product-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-state-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .empty-state-text {
+            font-size: 16px;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-muted {
+            color: var(--text-secondary);
+        }
+
+        .mt-4 {
+            margin-top: 16px;
+        }
+
+        .mb-4 {
+            margin-bottom: 16px;
+        }
+
+        /* Tooltips */
+        [title] {
+            position: relative;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+        }
+
+        .loading-overlay.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">S</div>
+                    <h1 class="logo-text">Katalog silikonových profilů</h1>
+                </div>
+                <div class="header-actions">
+                    <span class="text-muted" style="font-size: 14px; margin-right: 16px;" id="currentDate">
+                        <!-- Date will be inserted by JS -->
+                    </span>
+                    <button class="view-btn" onclick="exportToCSV()" title="Export do CSV">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                    <button class="view-btn" onclick="window.print()" title="Tisk">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                            <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"></path>
+                            <rect x="6" y="14" width="12" height="8"></rect>
+                        </svg>
+                    </button>
+                    <button class="view-btn" id="menuToggle" onclick="toggleSidebar()" title="Menu">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-section">
+                <h2 class="sidebar-title">Kategorie výrobků</h2>
+                <ul class="category-nav" id="categoryList">
+                    <li class="category-item">
+                        <button class="category-btn active" data-category="all">
+                            <span class="category-icon">📊</span>
+                            <span>Všechny výrobky</span>
+                            <span class="category-count" id="totalCount">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <div id="uploadSection" class="upload-container">
+                <div class="upload-card">
+                    <div class="upload-icon">📂</div>
+                    <h2 class="upload-title">Nahrát katalog</h2>
+                    <p class="upload-subtitle">Vyberte Excel soubor s katalogem silikonových výrobků</p>
+                    <input type="file" id="fileInput" accept=".xls,.xlsx" style="display: none;">
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                        Vybrat soubor
+                    </button>
+                    <p class="text-muted mt-4">Podporované formáty: .xls, .xlsx</p>
+                </div>
+            </div>
+
+            <!-- Catalog Section -->
+            <div id="catalogSection" class="hidden">
+                <!-- Controls -->
+                <div class="controls-section">
+                    <div class="search-container">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" id="searchInput" placeholder="Hledat podle kódu, názvu, zákazníka nebo směsi...">
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Celkem výrobků</div>
+                        <div class="stat-value" id="statTotal">0</div>
+                        <div class="stat-change positive">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                                <polyline points="16 7 22 7 22 13"></polyline>
+                            </svg>
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Zobrazeno</div>
+                        <div class="stat-value" id="statFiltered">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Kategorií</div>
+                        <div class="stat-value" id="statCategories">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Zákazníků</div>
+                        <div class="stat-value" id="statCustomers">0</div>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div class="products-section">
+                    <div class="products-header">
+                        <h2 class="products-title">Výrobky</h2>
+                        <div class="view-controls">
+                            <button class="view-btn active" data-view="grid" onclick="toggleViewMode('grid')" title="Zobrazení mřížka">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </button>
+                            <button class="view-btn" data-view="list" onclick="toggleViewMode('list')" title="Zobrazení seznam">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="productsContainer" class="products-grid">
+                        <div class="loading-container">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Detail výrobku</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modalContent">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <!-- Application Script -->
+    <script>
+        // Set current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('cs-CZ');
+
+        // Application State
+        const AppState = {
+            products: [],
+            filteredProducts: [],
+            categories: {},
+            currentCategory: 'all',
+            searchTerm: '',
+            viewMode: 'grid',
+            customers: new Set()
+        };
+
+        // DOM Elements Cache
+        const DOM = {
+            fileInput: document.getElementById('fileInput'),
+            uploadSection: document.getElementById('uploadSection'),
+            catalogSection: document.getElementById('catalogSection'),
+            searchInput: document.getElementById('searchInput'),
+            categoryList: document.getElementById('categoryList'),
+            productsContainer: document.getElementById('productsContainer'),
+            sidebar: document.getElementById('sidebar'),
+            modal: document.getElementById('productModal'),
+            modalContent: document.getElementById('modalContent'),
+            stats: {
+                total: document.getElementById('statTotal'),
+                filtered: document.getElementById('statFiltered'),
+                categories: document.getElementById('statCategories'),
+                customers: document.getElementById('statCustomers')
+            }
+        };
+
+        // Vylepšená ProfileGenerator třída
+        class ProfileGenerator {
+            static generateProfile(product) {
+                try {
+                    const name = (product.name || '').toLowerCase();
+                    const category = product.category;
+                    const code = (product.code || '').toLowerCase();
+                    
+                    // Kontrola specifických kódů a názvů
+                    // Oprava pro "Rototové" (překlep v datech)
+                    if (name.includes('rotorov') || name.includes('rototov') || (name.includes('těsnění') && name.match(/\d+x\d+x\d+/))) {
+                        return this.generateRotorSeal(name);
+                    }
+                    
+                    // VMQ profily
+                    if (name.includes('vmq profil') || code.includes('235 590') || code.includes('235 090')) {
+                        return this.generateVMQProfile(name, product.mixture);
+                    }
+                    
+                    // Silikonový profil s dutinkou
+                    if (name.includes('silikonový profil') && name.includes('dutinkou')) {
+                        return this.generateHollowDProfile(name);
+                    }
+                    
+                    // Kódové označení typu 150-043670-001
+                    if (name.match(/^\d{3}-\d{6}-\d{3}$/)) {
+                        return this.generateCodeDesignation(name, product);
+                    }
+                    
+                    // Základní tvary podle kategorie
+                    if (category.includes('Šňůra')) {
+                        return this.generateCircle(name);
+                    } else if (category.includes('Čtverec')) {
+                        return this.generateSquare(name);
+                    } else if (category.includes('Obdelník')) {
+                        return this.generateRectangle(name);
+                    } else if (category.includes('Hadice')) {
+                        return this.generateTube(name);
+                    } else {
+                        return this.analyzeAndGenerateProfile(name, product);
+                    }
+                } catch (error) {
+                    console.error('Error generating profile:', error);
+                    return this.generateDefaultProfile('');
+                }
+            }
+
+            static analyzeAndGenerateProfile(name, product) {
+                // Kontrola specifických tvarů podle kódu artiklu
+                const code = (product.code || '').toLowerCase();
+                
+                // VMQ profily
+                if (code.includes('235 590') || code.includes('235 090')) {
+                    return this.generateVMQProfile(name, product.mixture);
+                }
+                
+                // Profily s rozměry typu AxBxC
+                if (name.match(/\d+\s*x\s*\d+\s*x\s*\d+/)) {
+                    return this.generateRotorSeal(name);
+                }
+                
+                // Profily s rozměry typu AxB/C,Dmm (např. 10x5/2,1mm)
+                if (name.match(/\d+x\d+\/\d+[,\.]\d+mm/)) {
+                    return this.generateComplexProfile(name);
+                }
+                
+                // Kontrola písmen v uvozovkách
+                const letterMatch = name.match(/tvar\s*[""]?\s*([a-z])\s*[""]?/i);
+                if (letterMatch) {
+                    const letter = letterMatch[1].toUpperCase();
+                    switch(letter) {
+                        case 'E': return this.generateEProfile();
+                        case 'D': return this.generateDProfile();
+                        case 'U': return this.generateUProfile();
+                        case 'P': return this.generatePProfile();
+                        case 'L': return this.generateLProfile();
+                    }
+                }
+                
+                // Speciální tvary
+                if (name.includes('trojúhelník')) return this.generateTriangle();
+                if (name.includes('lichoběž')) return this.generateTrapezoid();
+                if (name.includes('dutink') || name.includes('dutinou')) {
+                    if (name.includes('11,4x8,2')) {
+                        return this.generateHollowDProfile(name);
+                    }
+                    return this.generateHollowProfile(name);
+                }
+                
+                // Kódované profily
+                if (name.match(/ofc-v-\d+|rub-\d+|pv\s+\d+/i)) return this.generateCodedProfile(name);
+                
+                // Squeegee
+                if (name.includes('squeegee')) return this.generateSqueegeeProfile();
+                
+                // Profily s rozměry
+                if (name.match(/\d+\s*[x×]\s*\d+/)) return this.generateDimensionProfile(name);
+                
+                // Obecný tvarový profil
+                if (name.includes('tvarový') || name.includes('profil')) return this.generateCustomProfile();
+                
+                // Default
+                return this.generateDefaultProfile('');
+            }
+
+            // Nová metoda pro rotorové těsnění
+            static generateRotorSeal(name) {
+                const match = name.match(/(\d+(?:[,\.]\d+)?)\s*x\s*(\d+(?:[,\.]\d+)?)\s*x\s*(\d+(?:[,\.]\d+)?)/);
+                let w = 27, h = 31, t = 3;
+                if (match) {
+                    w = parseFloat(match[1].replace(',', '.'));
+                    h = parseFloat(match[2].replace(',', '.'));
+                    t = parseFloat(match[3].replace(',', '.'));
+                }
+                
+                const scale = Math.min(120 / Math.max(w, h), 4);
+                const ws = w * scale;
+                const hs = h * scale;
+                const ts = t * scale;
+                const offsetX = (200 - ws) / 2;
+                const offsetY = (200 - hs) / 2;
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect x="${offsetX}" y="${offsetY}" width="${ws}" height="${hs}" 
+                              fill="none" stroke="#1f2937" stroke-width="2" rx="2"/>
+                        <rect x="${offsetX + ts}" y="${offsetY + ts}" 
+                              width="${ws - 2*ts}" height="${hs - 2*ts}" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="1.5" rx="1"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Rotor ${w}×${h}×${t}</text>
+                    </svg>
+                `;
+            }
+
+            // Nová metoda pro VMQ profily
+            static generateVMQProfile(name, mixture) {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                const isBlack = mixture && mixture.toLowerCase().includes('black');
+                const fillColor = isBlack ? '#2d2d2d' : '#f3f4f6';
+                const patternColor = isBlack ? '#4a4a4a' : '#e5e7eb';
+                
+                // Squeegee profil
+                if (name.includes('squeegee')) {
+                    return this.generateSqueegeeProfile();
+                }
+                
+                if (name.includes('okrová tvarový')) {
+                    // VMQ profil Beige - speciální tvar
+                    return `
+                        <svg viewBox="0 0 200 200" class="profile-svg">
+                            <defs>
+                                <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                    <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="${patternColor}" stroke-width="0.5"/>
+                                </pattern>
+                            </defs>
+                            <path d="M 50,100 L 50,80 L 80,60 L 120,60 L 150,80 L 150,100 L 150,120 L 120,120 L 100,110 L 80,110 L 50,100 Z" 
+                                  fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                            <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">VMQ Profil</text>
+                        </svg>
+                    `;
+                } else if (name.includes('černý tvarový')) {
+                    // VMQ profil černý tvarový - s dutinou
+                    return `
+                        <svg viewBox="0 0 200 200" class="profile-svg">
+                            <defs>
+                                <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                    <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="${patternColor}" stroke-width="0.5"/>
+                                </pattern>
+                            </defs>
+                            <circle cx="100" cy="100" r="40" fill="${fillColor}" stroke="#1f2937" stroke-width="2"/>
+                            <circle cx="100" cy="100" r="20" fill="white" stroke="#1f2937" stroke-width="1.5"/>
+                            <path d="M 100,60 L 85,45 M 100,60 L 115,45" stroke="#1f2937" stroke-width="2" fill="none"/>
+                            <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">VMQ Tvarový</text>
+                        </svg>
+                    `;
+                } else {
+                    // Obecný VMQ profil
+                    return `
+                        <svg viewBox="0 0 200 200" class="profile-svg">
+                            <defs>
+                                <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                    <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="${patternColor}" stroke-width="0.5"/>
+                                </pattern>
+                            </defs>
+                            <path d="M 60,70 L 140,70 C 150,70 160,80 160,90 L 160,110 C 160,120 150,130 140,130 L 60,130 C 50,130 40,120 40,110 L 40,90 C 40,80 50,70 60,70 Z" 
+                                  fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                            <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">VMQ Profil</text>
+                        </svg>
+                    `;
+                }
+            }
+
+            // Nová metoda pro kódové označení
+            static generateCodeDesignation(name, product) {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                const code = name.toUpperCase();
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect x="50" y="70" width="100" height="60" fill="url(#${id})" stroke="#1f2937" stroke-width="2" rx="8"/>
+                        <text x="100" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1f2937">${product.categoryName || 'PROFIL'}</text>
+                        <text x="100" y="115" text-anchor="middle" font-size="11" fill="#6b7280">${code}</text>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Kód: ${code}</text>
+                    </svg>
+                `;
+            }
+
+            // Nová metoda pro složité profily typu 10x5/2,1mm
+            static generateComplexProfile(name) {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                const match = name.match(/(\d+)x(\d+)\/(\d+)[,\.](\d+)/);
+                let label = 'Tvarový profil';
+                if (match) {
+                    label = `${match[1]}×${match[2]}/${match[3]},${match[4]}mm`;
+                }
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 60,80 L 140,80 L 140,100 L 130,100 L 120,110 L 80,110 L 70,100 L 60,100 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <circle cx="100" cy="95" r="8" fill="white" stroke="#1f2937" stroke-width="1.5"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="11" fill="#6b7280">${label}</text>
+                    </svg>
+                `;
+            }
+
+            // Nová metoda pro D-profil s dutinkou
+            static generateHollowDProfile(name) {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                const match = name.match(/(\d+(?:[,\.]\d+)?)\s*x\s*(\d+(?:[,\.]\d+)?)/);
+                let w = 11.4, h = 8.2;
+                if (match) {
+                    w = parseFloat(match[1].replace(',', '.'));
+                    h = parseFloat(match[2].replace(',', '.'));
+                }
+                
+                const scale = Math.min(100 / Math.max(w, h), 8);
+                const ws = w * scale;
+                const hs = h * scale;
+                const offsetX = (200 - ws) / 2;
+                const offsetY = (200 - hs) / 2;
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M ${offsetX},${100} 
+                                 C ${offsetX},${offsetY} ${offsetX + ws/4},${offsetY} ${offsetX + ws/2},${offsetY}
+                                 C ${offsetX + 3*ws/4},${offsetY} ${offsetX + ws},${offsetY} ${offsetX + ws},${100}
+                                 C ${offsetX + ws},${200 - offsetY} ${offsetX + 3*ws/4},${200 - offsetY} ${offsetX + ws/2},${200 - offsetY}
+                                 C ${offsetX + ws/4},${200 - offsetY} ${offsetX},${200 - offsetY} ${offsetX},${100}
+                                 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <circle cx="${100}" cy="${100}" r="${Math.min(ws, hs) * 0.2}" 
+                                fill="white" stroke="#1f2937" stroke-width="1.5"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">D-profil ${w}×${h}</text>
+                    </svg>
+                `;
+            }
+
+            static generateCircle(name) {
+                const match = name.match(/ø\s*(\d+(?:[,\.]\d+)?)/);
+                const diameter = match ? parseFloat(match[1].replace(',', '.')) : 10;
+                const scale = Math.min(100 / diameter, 8);
+                const r = diameter * scale / 2;
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <circle cx="100" cy="100" r="${r}" fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">ø${diameter}</text>
+                    </svg>
+                `;
+            }
+
+            static generateSquare(name) {
+                const match = name.match(/□?\s*(\d+(?:[,\.]\d+)?)\s*x\s*(\d+(?:[,\.]\d+)?)/);
+                const size = match ? parseFloat(match[1].replace(',', '.')) : 10;
+                const scale = Math.min(120 / size, 8);
+                const s = size * scale;
+                const offset = (200 - s) / 2;
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect x="${offset}" y="${offset}" width="${s}" height="${s}" fill="url(#${id})" stroke="#1f2937" stroke-width="2" rx="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">□${size}×${size}</text>
+                    </svg>
+                `;
+            }
+
+            static generateRectangle(name) {
+                const match = name.match(/□?\s*(\d+(?:[,\.]\d+)?)\s*x\s*(\d+(?:[,\.]\d+)?)/);
+                let width = 20, height = 10;
+                if (match) {
+                    width = parseFloat(match[1].replace(',', '.'));
+                    height = parseFloat(match[2].replace(',', '.'));
+                }
+                
+                const scale = Math.min(140 / Math.max(width, height), 6);
+                const w = width * scale;
+                const h = height * scale;
+                const offsetX = (200 - w) / 2;
+                const offsetY = (200 - h) / 2;
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect x="${offsetX}" y="${offsetY}" width="${w}" height="${h}" fill="url(#${id})" stroke="#1f2937" stroke-width="2" rx="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">□${width}×${height}</text>
+                    </svg>
+                `;
+            }
+
+            static generateTube(name) {
+                const match = name.match(/(\d+(?:[,\.]\d+)?)\s*\/\s*(\d+(?:[,\.]\d+)?)/);
+                let innerD = 5, outerD = 10;
+                if (match) {
+                    innerD = parseFloat(match[1].replace(',', '.'));
+                    outerD = parseFloat(match[2].replace(',', '.'));
+                }
+                
+                const scale = Math.min(100 / outerD, 6);
+                const ro = outerD * scale / 2;
+                const ri = innerD * scale / 2;
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 100,${100-ro} A ${ro},${ro} 0 1,1 100,${100+ro} A ${ro},${ro} 0 1,1 100,${100-ro}
+                                 M 100,${100-ri} A ${ri},${ri} 0 1,0 100,${100+ri} A ${ri},${ri} 0 1,0 100,${100-ri}"
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2" fill-rule="evenodd"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">ø${innerD}/${outerD}</text>
+                    </svg>
+                `;
+            }
+
+            static generateEProfile() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 60,50 L 60,150 L 130,150 L 130,135 L 75,135 L 75,107.5 L 120,107.5 L 120,92.5 L 75,92.5 L 75,65 L 130,65 L 130,50 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">E-profil</text>
+                    </svg>
+                `;
+            }
+
+            static generateDProfile() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 60,140 L 60,60 L 90,60 C 120,60 140,80 140,100 C 140,120 120,140 90,140 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">D-profil</text>
+                    </svg>
+                `;
+            }
+
+            static generateUProfile() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 60,60 L 60,120 C 60,135 70,145 85,145 L 115,145 C 130,145 140,135 140,120 L 140,60 L 125,60 L 125,120 C 125,127 122,130 115,130 L 85,130 C 78,130 75,127 75,120 L 75,60 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">U-profil</text>
+                    </svg>
+                `;
+            }
+
+            static generatePProfile() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 70,140 L 70,60 L 100,60 C 125,60 140,75 140,95 C 140,115 125,130 100,130 L 85,130 L 85,140 Z M 85,75 L 85,115 L 100,115 C 115,115 125,108 125,95 C 125,82 115,75 100,75 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2" fill-rule="evenodd"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">P-profil</text>
+                    </svg>
+                `;
+            }
+
+            static generateLProfile() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 70,60 L 70,130 L 130,130 L 130,115 L 85,115 L 85,60 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">L-profil</text>
+                    </svg>
+                `;
+            }
+
+            static generateTriangle() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 100,60 L 140,130 L 60,130 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Trojúhelník</text>
+                    </svg>
+                `;
+            }
+
+            static generateTrapezoid() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 70,130 L 80,70 L 120,70 L 130,130 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Lichoběžník</text>
+                    </svg>
+                `;
+            }
+
+            static generateHollowProfile(name) {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                const hasMultiple = name.includes('2x') || name.includes('dvě');
+                
+                if (hasMultiple) {
+                    return `
+                        <svg viewBox="0 0 200 200" class="profile-svg">
+                            <defs>
+                                <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                    <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                                </pattern>
+                            </defs>
+                            <rect x="40" y="70" width="120" height="60" fill="url(#${id})" stroke="#1f2937" stroke-width="2" rx="8"/>
+                            <circle cx="70" cy="100" r="15" fill="white" stroke="#1f2937" stroke-width="2"/>
+                            <circle cx="130" cy="100" r="15" fill="white" stroke="#1f2937" stroke-width="2"/>
+                            <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Profil s dutinkami</text>
+                        </svg>
+                    `;
+                }
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect x="50" y="70" width="100" height="60" fill="url(#${id})" stroke="#1f2937" stroke-width="2" rx="8"/>
+                        <circle cx="100" cy="100" r="20" fill="white" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Profil s dutinkou</text>
+                    </svg>
+                `;
+            }
+
+            static generateCodedProfile(name) {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                const codeMatch = name.match(/(ofc-v-\d+-\w|rub-\d+|pv\s+\d+-\d+)/i);
+                const code = codeMatch ? codeMatch[1].toUpperCase() : 'Kód';
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 50,120 L 50,80 C 50,65 60,55 75,55 L 125,55 C 140,55 150,65 150,80 L 150,120 C 150,135 140,145 125,145 L 75,145 C 60,145 50,135 50,120 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <circle cx="100" cy="100" r="15" fill="white" stroke="#1f2937" stroke-width="1.5"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="11" fill="#6b7280">${code}</text>
+                    </svg>
+                `;
+            }
+
+            static generateSqueegeeProfile() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 60,60 L 140,60 L 140,100 L 110,130 L 90,130 L 60,100 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Squeegee</text>
+                    </svg>
+                `;
+            }
+
+            static generateDimensionProfile(name) {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                const match = name.match(/(\d+(?:[,\.]\d+)?)\s*[x×]\s*(\d+(?:[,\.]\d+)?)/);
+                const label = match ? `${match[1]}×${match[2]}mm` : 'Tvarový';
+                
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 50,70 L 150,70 L 150,90 L 140,90 L 140,110 L 150,110 L 150,130 L 50,130 L 50,110 L 60,110 L 60,90 L 50,90 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">${label}</text>
+                    </svg>
+                `;
+            }
+
+            static generateCustomProfile() {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <path d="M 60,140 L 60,100 C 60,70 80,50 110,50 C 140,50 160,70 160,100 L 160,140 L 140,140 L 140,100 C 140,85 130,75 115,75 C 100,75 90,85 90,100 L 90,140 Z" 
+                              fill="url(#${id})" stroke="#1f2937" stroke-width="2"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Tvarový profil</text>
+                    </svg>
+                `;
+            }
+
+            static generateDefaultProfile(name) {
+                const id = 'p' + Math.random().toString(36).substr(2, 9);
+                return `
+                    <svg viewBox="0 0 200 200" class="profile-svg">
+                        <defs>
+                            <pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <path d="M 0,4 l 4,-4 M -1,1 l 2,-2 M 3,5 l 2,-2" stroke="#e5e7eb" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect x="50" y="80" width="100" height="40" fill="url(#${id})" stroke="#1f2937" stroke-width="2" rx="4"/>
+                        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#6b7280">Profil</text>
+                    </svg>
+                `;
+            }
+        }
+
+        // Catalog Manager Class
+        class CatalogManager {
+            constructor() {
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                DOM.fileInput.addEventListener('change', (e) => this.handleFileUpload(e));
+                DOM.searchInput.addEventListener('input', (e) => this.handleSearch(e));
+                
+                // Category buttons will be added dynamically
+                document.addEventListener('click', (e) => {
+                    // Find the closest category button (handles clicks on child elements)
+                    const categoryBtn = e.target.closest('.category-btn');
+                    if (categoryBtn) {
+                        e.preventDefault();
+                        this.handleCategoryChange(categoryBtn.dataset.category);
+                    }
+                });
+            }
+
+            async handleFileUpload(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                try {
+                    const data = await this.readExcelFile(file);
+                    this.processExcelData(data);
+                    this.showCatalog();
+                } catch (error) {
+                    console.error('Error loading file:', error);
+                    alert('Chyba při načítání souboru. Zkontrolujte formát souboru.');
+                }
+            }
+
+            readExcelFile(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const data = new Uint8Array(e.target.result);
+                            const workbook = XLSX.read(data, { type: 'array' });
+                            resolve(workbook);
+                        } catch (error) {
+                            reject(error);
+                       }
+                   };
+                   reader.readAsArrayBuffer(file);
+               });
+           }
+
+           processExcelData(workbook) {
+               AppState.products = [];
+               AppState.categories = {};
+               AppState.customers.clear();
+
+               const categoryMap = {
+                   'Šňůra-A': { name: 'Šňůra', icon: '⭕' },
+                   'Čtverec-B': { name: 'Čtverec', icon: '⬜' },
+                   'Obdelník-C': { name: 'Obdélník', icon: '▬' },
+                   'Hadice-D': { name: 'Hadice', icon: '⭘' },
+                   '30ShA-E': { name: '30 ShA', icon: '🔷' },
+                   '40ShA-F': { name: '40 ShA', icon: '🔷' },
+                   '50ShA-G': { name: '50 ShA', icon: '🔷' },
+                   '60ShA-G': { name: '60 ShA', icon: '🔷' },
+                   '70ShA-I': { name: '70 ShA', icon: '🔷' }
+               };
+
+               workbook.SheetNames.forEach(sheetName => {
+                   if (categoryMap[sheetName]) {
+                       const sheet = workbook.Sheets[sheetName];
+                       const sheetData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                       
+                       // Find header row
+                       let headerRow = -1;
+                       for (let i = 0; i < Math.min(5, sheetData.length); i++) {
+                           if (sheetData[i] && sheetData[i][0] === "P.č.") {
+                               headerRow = i;
+                               break;
+                           }
+                       }
+                       
+                       if (headerRow !== -1) {
+                           let emptyRowCount = 0;
+                           const maxEmptyRows = 5; // Stop after 5 empty rows
+                           
+                           // Process products
+                           for (let i = headerRow + 1; i < sheetData.length; i++) {
+                               const row = sheetData[i];
+                               
+                               // Check if row has meaningful data
+                               if (!row || !row[0] || row[0].toString().trim() === '') {
+                                   emptyRowCount++;
+                                   if (emptyRowCount >= maxEmptyRows) {
+                                       break; // Stop processing this sheet
+                                   }
+                                   continue;
+                               }
+                               
+                               // Reset empty row counter if we found data
+                               emptyRowCount = 0;
+                               
+                               // Only process if first column has a number
+                               const rowNumber = row[0].toString().replace('.', '').trim();
+                               if (!isNaN(parseInt(rowNumber))) {
+                                   // Extract all available data from the row
+                                   const product = {
+                                       id: AppState.products.length + 1,
+                                       category: sheetName,
+                                       categoryName: categoryMap[sheetName].name,
+                                       categoryIcon: categoryMap[sheetName].icon,
+                                       number: row[0],
+                                       cn: row[1] || '-',
+                                       development: row[2] || '-',
+                                       code: row[3] || '-', // Artikl
+                                       mixture: row[4] || '-', // Směs
+                                       customer: row[5] || '-', // Zákazník
+                                       name: row[6] || '-', // Název (contains dimensions and shape)
+                                       image: '-', // Obrázek (not in data)
+                                       drawer: '-', // Will be set based on category
+                                       barcode: '-', // Čárový kód
+                                       note: '-' // Poznámka
+                                   };
+                                   
+                                   // Category-specific field mapping
+                                   if (sheetName === 'Šňůra-A' || sheetName === 'Čtverec-B' || 
+                                       sheetName === 'Obdelník-C' || sheetName === 'Hadice-D') {
+                                       // For these categories: drawer is in position 7, barcode in 8, note in 9
+                                       product.drawer = row[7] || '-';
+                                       product.barcode = row[8] || '-';
+                                       product.note = row[9] || '-';
+                                   } else {
+                                       // For ShA categories: no drawer column, barcode in 7, note in 8
+                                       product.drawer = '-';
+                                       product.barcode = row[7] || '-';
+                                       product.note = row[8] || '-';
+                                   }
+                                   
+                                   // Only add product if it has essential data
+                                   if (product.code !== '-' || product.name !== '-') {
+                                       AppState.products.push(product);
+                                       
+                                       // Update categories count
+                                       if (!AppState.categories[sheetName]) {
+                                           AppState.categories[sheetName] = {
+                                               ...categoryMap[sheetName],
+                                               count: 0
+                                           };
+                                       }
+                                       AppState.categories[sheetName].count++;
+                                       
+                                       // Update customers
+                                       if (product.customer && product.customer !== '-') {
+                                           AppState.customers.add(product.customer);
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               });
+
+               console.log(`Načteno ${AppState.products.length} produktů z ${Object.keys(AppState.categories).length} kategorií`);
+               this.updateCategoryList();
+               this.filterAndDisplayProducts();
+           }
+
+           updateCategoryList() {
+               const categoryItems = Object.entries(AppState.categories).map(([key, cat]) => `
+                   <li class="category-item">
+                       <button class="category-btn" data-category="${key}">
+                           <span class="category-icon">${cat.icon}</span>
+                           <span>${cat.name}</span>
+                           <span class="category-count">${cat.count}</span>
+                       </button>
+                   </li>
+               `).join('');
+
+               DOM.categoryList.innerHTML = `
+                   <li class="category-item">
+                       <button class="category-btn active" data-category="all">
+                           <span class="category-icon">📊</span>
+                           <span>Všechny výrobky</span>
+                           <span class="category-count">${AppState.products.length}</span>
+                       </button>
+                   </li>
+                   ${categoryItems}
+               `;
+           }
+
+           handleSearch(event) {
+               AppState.searchTerm = event.target.value.toLowerCase();
+               this.filterAndDisplayProducts();
+           }
+
+           handleCategoryChange(category) {
+               AppState.currentCategory = category;
+               
+               // Update active state
+               document.querySelectorAll('.category-btn').forEach(btn => {
+                   btn.classList.toggle('active', btn.dataset.category === category);
+               });
+               
+               this.filterAndDisplayProducts();
+           }
+
+           filterAndDisplayProducts() {
+               AppState.filteredProducts = AppState.products.filter(product => {
+                   const matchesCategory = AppState.currentCategory === 'all' || product.category === AppState.currentCategory;
+                   const matchesSearch = !AppState.searchTerm || 
+                       product.code.toLowerCase().includes(AppState.searchTerm) ||
+                       product.name.toLowerCase().includes(AppState.searchTerm) ||
+                       product.customer.toLowerCase().includes(AppState.searchTerm) ||
+                       product.mixture.toLowerCase().includes(AppState.searchTerm) ||
+                       product.cn.toString().toLowerCase().includes(AppState.searchTerm) ||
+                       product.development.toString().toLowerCase().includes(AppState.searchTerm);
+                   
+                   return matchesCategory && matchesSearch;
+               });
+
+               this.updateStats();
+               this.renderProducts();
+           }
+
+           updateStats() {
+               DOM.stats.total.textContent = AppState.products.length;
+               DOM.stats.filtered.textContent = AppState.filteredProducts.length;
+               DOM.stats.categories.textContent = Object.keys(AppState.categories).length;
+               DOM.stats.customers.textContent = AppState.customers.size;
+           }
+
+           renderProducts() {
+               if (AppState.filteredProducts.length === 0) {
+                   DOM.productsContainer.innerHTML = `
+                       <div class="empty-state">
+                           <div class="empty-state-icon">🔍</div>
+                           <div class="empty-state-title">Žádné výrobky nebyly nalezeny</div>
+                           <div class="empty-state-text">Zkuste změnit vyhledávací kritéria nebo kategorii</div>
+                       </div>
+                   `;
+                   return;
+               }
+
+               const productsHTML = AppState.filteredProducts.map(product => {
+                   const displayName = product.name !== '-' ? product.name : 'Profil';
+                   const displayCustomer = product.customer !== '-' ? product.customer : 'Skladem';
+                   
+                   return `
+                   <div class="product-card" onclick="showProductDetail(${product.id})">
+                       <div class="product-header">
+                           <span class="product-id">#${product.number}</span>
+                           <span class="product-status" title="Skladem"></span>
+                       </div>
+                       <div class="product-profile">
+                           ${ProfileGenerator.generateProfile(product)}
+                       </div>
+                       <div class="product-code">${product.code}</div>
+                       <div class="product-specs">
+                           <div class="spec-row">
+                               <span class="spec-label">Název:</span>
+                               <span class="spec-value">${displayName}</span>
+                           </div>
+                           <div class="spec-row">
+                               <span class="spec-label">Směs:</span>
+                               <span class="spec-value">${product.mixture}</span>
+                           </div>
+                           <div class="spec-row">
+                               <span class="spec-label">Zákazník:</span>
+                               <span class="spec-value">${displayCustomer}</span>
+                           </div>
+                           ${product.cn !== '-' ? `
+                           <div class="spec-row">
+                               <span class="spec-label">CN:</span>
+                               <span class="spec-value">${product.cn}</span>
+                           </div>
+                           ` : ''}
+                       </div>
+                       <div class="product-tags">
+                           <span class="product-tag">${product.categoryName}</span>
+                           ${product.drawer !== '-' ? `<span class="product-tag">Šuplík ${product.drawer}</span>` : ''}
+                           ${product.development !== '-' ? `<span class="product-tag">Vývoj: ${product.development}</span>` : ''}
+                       </div>
+                   </div>
+               `}).join('');
+
+               DOM.productsContainer.innerHTML = productsHTML;
+           }
+
+           showCatalog() {
+               DOM.uploadSection.classList.add('hidden');
+               DOM.catalogSection.classList.remove('hidden');
+           }
+       }
+
+       // Modal Functions
+       function showProductDetail(productId) {
+           const product = AppState.products.find(p => p.id === productId);
+           if (!product) return;
+
+           const modalHTML = `
+               <div class="detail-grid">
+                   <div class="detail-profile">
+                       ${ProfileGenerator.generateProfile(product)}
+                   </div>
+                   <div class="detail-info">
+                       <div class="info-section">
+                           <h4 class="info-title">Základní informace</h4>
+                           <div class="info-grid">
+                               <div class="info-row">
+                                   <span class="info-label">Kód výrobku:</span>
+                                   <span class="info-value">${product.code}</span>
+                               </div>
+                               <div class="info-row">
+                                   <span class="info-label">Název:</span>
+                                   <span class="info-value">${product.name}</span>
+                               </div>
+                               <div class="info-row">
+                                   <span class="info-label">Kategorie:</span>
+                                   <span class="info-value">${product.categoryName}</span>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="info-section">
+                           <h4 class="info-title">Technické údaje</h4>
+                           <div class="info-grid">
+                               <div class="info-row">
+                                   <span class="info-label">Směs:</span>
+                                   <span class="info-value">${product.mixture}</span>
+                               </div>
+                               <div class="info-row">
+                                   <span class="info-label">CN:</span>
+                                   <span class="info-value">${product.cn}</span>
+                               </div>
+                               <div class="info-row">
+                                   <span class="info-label">Vývoj:</span>
+                                   <span class="info-value">${product.development}</span>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="info-section">
+                           <h4 class="info-title">Skladové informace</h4>
+                           <div class="info-grid">
+                               <div class="info-row">
+                                   <span class="info-label">Zákazník:</span>
+                                   <span class="info-value">${product.customer}</span>
+                               </div>
+                               ${product.drawer !== '-' ? `
+                               <div class="info-row">
+                                   <span class="info-label">Umístění:</span>
+                                   <span class="info-value">Šuplík ${product.drawer}</span>
+                               </div>
+                               ` : ''}
+                               ${product.barcode !== '-' ? `
+                               <div class="info-row">
+                                   <span class="info-label">Čárový kód:</span>
+                                   <span class="info-value">${product.barcode}</span>
+                               </div>
+                               ` : ''}
+                               ${product.note !== '-' ? `
+                               <div class="info-row">
+                                   <span class="info-label">Poznámka:</span>
+                                   <span class="info-value">${product.note}</span>
+                               </div>
+                               ` : ''}
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           `;
+
+           DOM.modalContent.innerHTML = modalHTML;
+           DOM.modal.classList.add('show');
+       }
+
+       function closeModal() {
+           DOM.modal.classList.remove('show');
+       }
+
+       function toggleSidebar() {
+           const sidebar = DOM.sidebar;
+           const isOpen = sidebar.classList.contains('open');
+           
+           if (isOpen) {
+               sidebar.classList.remove('open');
+           } else {
+               sidebar.classList.add('open');
+           }
+           
+           // Add backdrop for mobile
+           let backdrop = document.querySelector('.sidebar-backdrop');
+           if (!backdrop && !isOpen && window.innerWidth <= 1024) {
+               backdrop = document.createElement('div');
+               backdrop.className = 'sidebar-backdrop';
+               backdrop.style.cssText = `
+                   position: fixed;
+                   top: 0;
+                   left: 0;
+                   right: 0;
+                   bottom: 0;
+                   background: rgba(0, 0, 0, 0.5);
+                   z-index: 1050;
+                   cursor: pointer;
+               `;
+               backdrop.addEventListener('click', toggleSidebar);
+               document.body.appendChild(backdrop);
+           } else if (backdrop && isOpen) {
+               backdrop.remove();
+           }
+       }
+
+       // Export to CSV function
+       function exportToCSV() {
+           if (AppState.products.length === 0) {
+               alert('Nejsou žádná data k exportu');
+               return;
+           }
+           
+           // Prepare CSV headers
+           const headers = ['Číslo', 'CN', 'Vývoj', 'Kód', 'Směs', 'Zákazník', 'Název', 'Kategorie', 'Šuplík', 'Poznámka'];
+           
+           // Prepare CSV rows
+           const rows = AppState.filteredProducts.map(product => [
+               product.number,
+               product.cn,
+               product.development,
+               product.code,
+               product.mixture,
+               product.customer,
+               product.name,
+               product.categoryName,
+               product.drawer,
+               product.note
+           ]);
+           
+           // Convert to CSV format
+           let csvContent = headers.join(';') + '\n';
+           rows.forEach(row => {
+               csvContent += row.map(cell => {
+                   // Escape quotes and wrap in quotes if contains semicolon
+                   const value = String(cell).replace(/"/g, '""');
+                   return value.includes(';') ? `"${value}"` : value;
+               }).join(';') + '\n';
+           });
+           
+           // Create blob and download
+           const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+           const link = document.createElement('a');
+           const url = URL.createObjectURL(blob);
+           
+           link.setAttribute('href', url);
+           link.setAttribute('download', `katalog_silikonu_${new Date().toISOString().slice(0,10)}.csv`);
+           link.style.visibility = 'hidden';
+           
+           document.body.appendChild(link);
+           link.click();
+           document.body.removeChild(link);
+       }
+
+       // View mode toggle
+       function toggleViewMode(mode) {
+           AppState.viewMode = mode;
+           
+           // Update button states
+           document.querySelectorAll('[data-view]').forEach(btn => {
+               btn.classList.toggle('active', btn.dataset.view === mode);
+           });
+           
+           // Update grid class
+           const container = DOM.productsContainer;
+           if (mode === 'list') {
+               container.classList.add('list-view');
+               container.style.gridTemplateColumns = '1fr';
+           } else {
+               container.classList.remove('list-view');
+               container.style.gridTemplateColumns = '';
+           }
+       }
+
+       // Initialize Application
+       const catalogManager = new CatalogManager();
+
+       // Global functions for onclick handlers
+       window.showProductDetail = showProductDetail;
+       window.closeModal = closeModal;
+       window.toggleSidebar = toggleSidebar;
+       window.exportToCSV = exportToCSV;
+       window.toggleViewMode = toggleViewMode;
+
+       // Close modal on overlay click
+       DOM.modal.addEventListener('click', (e) => {
+           if (e.target === DOM.modal) {
+               closeModal();
+           }
+       });
+
+       // Keyboard shortcuts
+       document.addEventListener('keydown', (e) => {
+           if (e.key === 'Escape') {
+               closeModal();
+           }
+           if (e.key === '/' && !DOM.searchInput.matches(':focus')) {
+               e.preventDefault();
+               DOM.searchInput.focus();
+           }
+       });
+   </script>
+</body>
+</html>
