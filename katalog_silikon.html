@@ -72,7 +72,7 @@
         }
 
         .header-content {
-            max-width: 1440px;
+            max-width: 100%;
             width: 100%;
             margin: 0 auto;
             display: flex;
@@ -143,7 +143,7 @@
             margin-top: 60px;
             flex: 1;
             padding: 24px;
-            max-width: 1440px;
+            max-width: 100%;
         }
 
         /* Search and Filters */
@@ -209,6 +209,11 @@
             align-items: center;
             justify-content: space-between;
             gap: 8px;
+            position: relative;
+        }
+
+        .category-btn * {
+            pointer-events: none;
         }
 
         .category-btn:hover {
@@ -328,6 +333,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 20px;
+            max-width: 100%;
         }
 
         /* Product Card */
@@ -653,10 +659,24 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Sidebar backdrop for mobile */
+        .sidebar-backdrop {
+            display: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .sidebar-backdrop {
+                display: block;
+                animation: fadeIn 200ms ease;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .sidebar {
                 transform: translateX(-100%);
+                z-index: 1100;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             }
 
             .sidebar.open {
@@ -665,6 +685,7 @@
 
             .main-content {
                 margin-left: 0;
+                width: 100%;
             }
 
             .products-grid {
@@ -696,6 +717,32 @@
             .modal {
                 width: 95%;
                 margin: 16px;
+            }
+        }
+
+        /* Podpora pro velmi široké monitory */
+        @media (min-width: 1920px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+                gap: 24px;
+            }
+            
+            .main-content {
+                padding: 32px;
+            }
+        }
+
+        @media (min-width: 2560px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            }
+            
+            .sidebar {
+                width: 320px;
+            }
+            
+            .main-content {
+                margin-left: 320px;
             }
         }
 
@@ -1684,8 +1731,11 @@
                 
                 // Category buttons will be added dynamically
                 document.addEventListener('click', (e) => {
-                    if (e.target.matches('.category-btn')) {
-                        this.handleCategoryChange(e.target.dataset.category);
+                    // Find the closest category button (handles clicks on child elements)
+                    const categoryBtn = e.target.closest('.category-btn');
+                    if (categoryBtn) {
+                        e.preventDefault();
+                        this.handleCategoryChange(categoryBtn.dataset.category);
                     }
                 });
             }
@@ -1733,8 +1783,9 @@
                    '30ShA-E': { name: '30 ShA', icon: '🔷' },
                    '40ShA-F': { name: '40 ShA', icon: '🔷' },
                    '50ShA-G': { name: '50 ShA', icon: '🔷' },
-                   '60ShA-G': { name: '60 ShA', icon: '🔷' },
-                   '70ShA-I': { name: '70 ShA', icon: '🔷' }
+                   '60ShA-H': { name: '60 ShA', icon: '🔷' },
+                   '70ShA-I': { name: '70 ShA', icon: '🔷' },
+                   'Konfekce': { name: 'Konfekce', icon: '🔧' }
                };
 
                workbook.SheetNames.forEach(sheetName => {
@@ -1787,11 +1838,25 @@
                                        mixture: row[4] || '-', // Směs
                                        customer: row[5] || '-', // Zákazník
                                        name: row[6] || '-', // Název (contains dimensions and shape)
-                                       image: row[7] || '-', // Obrázek (if exists)
-                                       drawer: row[8] || row[7] || '-', // Označení šuplíku (position varies)
-                                       barcode: row[9] || row[8] || '-', // Čárový kód
-                                       note: row[10] || row[9] || '-' // Poznámka
+                                       image: '-', // Obrázek (not in data)
+                                       drawer: '-', // Will be set based on category
+                                       barcode: '-', // Čárový kód
+                                       note: '-' // Poznámka
                                    };
+                                   
+                                   // Category-specific field mapping
+                                   if (sheetName === 'Šňůra-A' || sheetName === 'Čtverec-B' || 
+                                       sheetName === 'Obdelník-C' || sheetName === 'Hadice-D') {
+                                       // For these categories: drawer is in position 7, barcode in 8, note in 9
+                                       product.drawer = row[7] || '-';
+                                       product.barcode = row[8] || '-';
+                                       product.note = row[9] || '-';
+                                   } else {
+                                       // For ShA categories: no drawer column, barcode in 7, note in 8
+                                       product.drawer = '-';
+                                       product.barcode = row[7] || '-';
+                                       product.note = row[8] || '-';
+                                   }
                                    
                                    // Only add product if it has essential data
                                    if (product.code !== '-' || product.name !== '-') {
@@ -2034,7 +2099,35 @@
        }
 
        function toggleSidebar() {
-           DOM.sidebar.classList.toggle('open');
+           const sidebar = DOM.sidebar;
+           const isOpen = sidebar.classList.contains('open');
+           
+           if (isOpen) {
+               sidebar.classList.remove('open');
+           } else {
+               sidebar.classList.add('open');
+           }
+           
+           // Add backdrop for mobile
+           let backdrop = document.querySelector('.sidebar-backdrop');
+           if (!backdrop && !isOpen && window.innerWidth <= 1024) {
+               backdrop = document.createElement('div');
+               backdrop.className = 'sidebar-backdrop';
+               backdrop.style.cssText = `
+                   position: fixed;
+                   top: 0;
+                   left: 0;
+                   right: 0;
+                   bottom: 0;
+                   background: rgba(0, 0, 0, 0.5);
+                   z-index: 1050;
+                   cursor: pointer;
+               `;
+               backdrop.addEventListener('click', toggleSidebar);
+               document.body.appendChild(backdrop);
+           } else if (backdrop && isOpen) {
+               backdrop.remove();
+           }
        }
 
        // Export to CSV function
